@@ -18,11 +18,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class JunGroupSiteTest {
-	WebDriver driver;
+	static WebDriver driver;
 
 	@BeforeClass
 	public static void setup() {
-		System.setProperty("webdriver.chrome.driver", "driver/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "driver/chromedriver");	
 	}
 
 	@Before
@@ -34,7 +34,7 @@ public class JunGroupSiteTest {
 
 	@After
 	public void tearDown() {
-		driver.close();
+		 driver.close();
 	}
 
 	@Test
@@ -48,9 +48,10 @@ public class JunGroupSiteTest {
 		WebElement LearnMoreBrands = webDriverWait
 				.until(ExpectedConditions.elementToBeClickable(By.className("brands-learn-more")));
 		LearnMoreBrands.click();
-		// Count blocks cs-toggle-block
-		List<WebElement> megaBlock = driver.findElements(By.className("case-study-megablock"));
-		assertEquals(1, megaBlock.size());
+		 // Count blocks cs-toggle-block
+		 List<WebElement> blocks =
+		driver.findElements(By.className("cs-toggle-block"));
+		assertEquals(8, blocks.size());
 		// Click on the Case study
 		WebElement lg = driver.findElement(By.className("lg"));
 		lg.click();
@@ -76,14 +77,13 @@ public class JunGroupSiteTest {
 		WebElement menuPublishers = driver.findElement(By.className("publishers"));
 		menuPublishers.click();
 		// Click on "Learn more"
-		WebElement LearnMorePublishers = webDriverWait
-				.until(ExpectedConditions.elementToBeClickable(By.className("publishers-learn-more")));
-		LearnMorePublishers.click();
+		//driver.get("https://jungroup.com/publishers");
+		 WebElement LearnMorePublishers = webDriverWait
+		 .until(ExpectedConditions.elementToBeClickable(By.className("publishers-learn-more")));
+		 LearnMorePublishers.click();
 		// Find elements Contact blocks
-
-		WebElement block = driver.findElement(By.className("cs3"));
-		block.click();
-
+		 WebElement block = driver.findElement(By.className("cs3"));
+		 block.click();
 		// Click on "Go back"
 		WebElement GoBackPublishers = driver.findElement(By.className("go-back"));
 		GoBackPublishers.click();
@@ -92,7 +92,7 @@ public class JunGroupSiteTest {
 
 	@Test
 	public void testTeam() throws Exception {
-		WebDriverWait webDriverWait = new WebDriverWait(driver, 10);
+		WebDriverWait webDriverWait = new WebDriverWait(driver, 40);
 		// Click on "Team"
 		WebElement menuTeam = driver.findElement(By.className("team"));
 		menuTeam.click();
@@ -100,10 +100,11 @@ public class JunGroupSiteTest {
 		WebElement MeetTheFounders = webDriverWait
 				.until(ExpectedConditions.elementToBeClickable(By.className("meet-the-team")));
 		MeetTheFounders.click();
-		List<WebElement> founders = driver.findElements(By.className("founder-name"));
-		assertEquals(2, founders.size());
-		founders.get(0).click();
-		founders.get(1).click();
+		 List<WebElement> founders =
+		 driver.findElements(By.className("founder-name"));
+		 assertEquals(2, founders.size());
+		 founders.get(0).click();
+		 founders.get(1).click();
 
 	}
 
@@ -116,7 +117,7 @@ public class JunGroupSiteTest {
 		// List<WebElement> careerCategory =
 		// driver.findElements(By.className("career-category-link"));
 		// assertEquals(6, careerCategory.size());
-		WebDriverWait webDriverWait = new WebDriverWait(driver, 10);
+		WebDriverWait webDriverWait = new WebDriverWait(driver, 30);
 		WebElement adOperation = webDriverWait
 				.until(ExpectedConditions.elementToBeClickable(By.className("ad-operations")));
 		;
